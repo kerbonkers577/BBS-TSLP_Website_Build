@@ -1,0 +1,37 @@
+﻿@model TSLP_Website_Merge.Models.Partner
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Partner</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="partnerName" class="control-label"></label>
+                <input asp-for="partnerName" class="form-control" />
+                <span asp-validation-for="partnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="createAt" class="control-label"></label>
+                <input asp-for="createAt" class="form-control" />
+                <span asp-validation-for="createAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-success" />
+                <a class="btn btn-primary" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+

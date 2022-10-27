@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TSLP_Website_Merge.Models.Partner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Partners</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add new Partner</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.partnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+            //Make ID look nice
+            var x = item.Id;
+            string PaddedId = x.ToString().PadLeft(3, '0');
+            string finalId = "PA" + PaddedId;
+            //Date Format
+            var niceDate = item.createAt.ToString("dd/MM/yyyy");
+
+        <tr>
+            <td>
+                <a class="btn btn-success btn-sm" asp-controller="Partners" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-danger btn-sm" asp-controller="Partners" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td>
+                @finalId
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.partnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.createAt)*@
+                @niceDate
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

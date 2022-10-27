@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TSLP_Website_Merge.Models.Content>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Content</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<div class="cut">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Action
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            //Make ID look nice
+            var x = item.Id;
+            string PaddedId = x.ToString().PadLeft(3, '0');
+            string finalId = "PA" + PaddedId;
+            
+        <tr>
+            <td>
+                    <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Expand</a>
+            </td>
+            <td>
+                @finalId
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

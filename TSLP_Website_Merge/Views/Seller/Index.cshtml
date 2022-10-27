@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Sellers>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sellers</h1>
+
+<p>
+<a class="btn btn-primary" asp-controller="Seller" asp-action="Create">Add New Seller</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Previous Address</th>
+            <th>Current Address</th>
+            <th>Date Added</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            //Make ID look nice
+            var x = obj.Id;
+            string PaddedId = x.ToString().PadLeft(3, '0');
+            string finalId = "SE" + PaddedId;
+
+            //Calculate age from DOB
+            var then = obj.dob;
+            var now = DateTime.Today;
+            var currentAge = now.Year - then.Year;
+            string createdDate = obj.createAt.ToString("dd/MM/yyyy");
+            <tr>
+                <td>
+                    <a class="btn btn-success btn-sm" asp-controller="Seller" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Seller" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                </td>
+                <td>@finalId</td>
+                <td>@obj.firsrtName</td>
+                <td>@obj.lastName</td>
+                <td>@currentAge</td>
+                <td>@obj.perviousAddress</td>
+                <td>@obj.currentAddress</td>
+                <td>@createdDate</td>
+                <td>@obj.description</td>
+            </tr>
+        }
+    </tbody>
+</table>
