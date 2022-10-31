@@ -8,10 +8,15 @@ namespace TSLP_Website_Merge.Models.Domain
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
 
-        }            
+        }
+
         public DbSet<Sellers> sellers { get; set; }
+
         public DbSet<Partner> partners { get; set; }
+
         public DbSet<Content> content { get; set; }
+
         public DbSet<Roster> roster { get; set; }
+
     }
 }

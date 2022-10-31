@@ -1,23 +1,24 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using TSLP_Website_Merge.Models.Domain;
 using TSLP_Website_Merge.Repositories.Abstract;
 using TSLP_Website_Merge.Repositories.Implementation;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+    builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
-// For Identity    
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    // For Identity  
+    builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<DatabaseContext>()
         .AddDefaultTokenProviders();
 
-builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
+    builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
 
-// Add services to container
+//add services to container
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 var app = builder.Build();
 
@@ -33,7 +34,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthorization();
+app.UseAuthentication();    
 app.UseAuthorization();
 
 app.MapControllerRoute(

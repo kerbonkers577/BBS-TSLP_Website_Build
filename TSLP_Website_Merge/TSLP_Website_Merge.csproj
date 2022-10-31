@@ -7,6 +7,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Home\**" />
+    <Compile Remove="Views\Seller\**" />
+    <Content Remove="Views\Home\**" />
+    <Content Remove="Views\Seller\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Views\Seller\**" />
+    <None Remove="Views\Home\**" />
+    <None Remove="Views\Seller\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\MySellers - Copy (2)\Display.cshtml" />
+    <Content Remove="Views\MyCommunity\Display.cshtml" />
+    <Content Remove="Views\MySellers\Display.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Admin\Display.cshtml" />
+    <None Include="Views\MyAndroidApp\Display.cshtml" />
+    <None Include="Views\MyCommunity\Display.cshtml" />
+    <None Include="Views\MySellers\Display.cshtml" />
+    <None Include="Views\Dashboard\Display.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\UserAuthentication\ChangePassword.cshtml" />
+    <None Include="Views\UserAuthentication\Login.cshtml" />
+    <None Include="Views\UserAuthentication\Registration.cshtml" />
+    <None Include="wwwroot\css\dashboard.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">

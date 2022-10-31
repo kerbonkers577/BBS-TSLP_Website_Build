@@ -18,7 +18,8 @@ namespace TSLP_Website_Merge.Repositories.Implementation
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
-            this.signInManager = signInManager;
+            this.signInManager = signInManager; 
+
         }
 
         public async Task<Status> RegisterAsync(RegistrationModel model)
@@ -62,6 +63,7 @@ namespace TSLP_Website_Merge.Repositories.Implementation
             status.Message = "You have registered successfully";
             return status;
         }
+
 
         public async Task<Status> LoginAsync(LoginModel model)
         {
